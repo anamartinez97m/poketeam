@@ -5,13 +5,13 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="gzg-W5-l3j">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Zea-tn-Y0v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController id="fq8-wg-GlP" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="mob-tA-7Ah"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vf7-R3-Mym">
@@ -26,13 +26,13 @@
                         <segue destination="IR0-da-zsE" kind="relationship" relationship="viewControllers" id="3Tc-P1-ZBX"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zea-tn-Y0v" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2045" y="457"/>
         </scene>
         <!--MyTeam-->
         <scene sceneID="Qz0-9Z-adq">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ies-Qe-iWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="MyTeam" id="ftc-sU-fhO" userLabel="MyTeam" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBd-zw-rst">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -52,13 +52,13 @@
                     <tabBarItem key="tabBarItem" title="MyTeam" image="heart" catalog="system" id="ple-Ie-G1r" userLabel="MyTeam"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ies-Qe-iWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-933" y="-331"/>
         </scene>
         <!--PokeFinder-->
         <scene sceneID="SsU-1r-rhG">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5UH-Iq-9Sh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="PokeFinder" id="1MY-pg-kcE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tI5-uR-hbG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -77,38 +77,62 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="PokeFinder" image="magnifyingglass" catalog="system" selectedImage="magnifyingglass" id="UEi-vZ-6f9"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5UH-Iq-9Sh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-252" y="10"/>
         </scene>
         <!--PokeList-->
         <scene sceneID="PR8-Z7-k0i">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qSU-Du-tH0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="PokeList" id="SCv-mc-BLJ" userLabel="PokeList" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oX9-cj-X8j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="PokeList Scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4cU-Mn-gIn">
-                                <rect key="frame" x="141" y="438" width="117" height="21"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CGb-Zp-r1o">
+                                <rect key="frame" x="20" y="44" width="374" height="754"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="auO-mg-MZL">
+                                    <size key="itemSize" width="135" height="131"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="pTY-88-8Fk">
+                                        <rect key="frame" x="0.0" y="0.0" width="135" height="131"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="a9n-Lz-ksQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="135" height="131"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRX-P2-PdX" userLabel="PokemonLabel">
+                                                    <rect key="frame" x="46" y="55" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="135" height="131"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wwv-zS-sIb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="PokeList" image="list.bullet" catalog="system" selectedImage="list.bullet" id="wpY-aJ-ThS" userLabel="PokeList"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qSU-Du-tH0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-252" y="680"/>
+            <point key="canvasLocation" x="-252.17391304347828" y="679.6875"/>
         </scene>
         <!--Settings-->
         <scene sceneID="7du-9J-Kyt">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UvN-K3-v1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Settings" id="IR0-da-zsE" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tvh-e1-nb7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -127,6 +151,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" selectedImage="gearshape" id="flq-1X-06u"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UvN-K3-v1C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-932" y="1033"/>
         </scene>
