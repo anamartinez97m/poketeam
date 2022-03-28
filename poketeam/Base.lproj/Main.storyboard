@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fq8-wg-GlP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment version="4864" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -84,7 +85,7 @@
         <!--PokeList-->
         <scene sceneID="PR8-Z7-k0i">
             <objects>
-                <viewController title="PokeList" id="SCv-mc-BLJ" userLabel="PokeList" sceneMemberID="viewController">
+                <viewController title="PokeList" id="SCv-mc-BLJ" userLabel="PokeList" customClass="PokeListViewController" customModule="poketeam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oX9-cj-X8j">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,30 +96,59 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="auO-mg-MZL">
                                     <size key="itemSize" width="135" height="131"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="pTY-88-8Fk">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="131"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="pTY-88-8Fk" customClass="PokemonCollectionViewCell" customModule="poketeam" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="135" height="131"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="a9n-Lz-ksQ">
                                             <rect key="frame" x="0.0" y="0.0" width="135" height="131"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRX-P2-PdX" userLabel="PokemonLabel">
-                                                    <rect key="frame" x="46" y="55" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRX-P2-PdX" userLabel="PokemonLabel">
+                                                    <rect key="frame" x="47" y="55.5" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KRX-P2-PdX" firstAttribute="centerY" secondItem="a9n-Lz-ksQ" secondAttribute="centerY" id="HcZ-Q0-flf"/>
+                                                <constraint firstItem="KRX-P2-PdX" firstAttribute="centerX" secondItem="a9n-Lz-ksQ" secondAttribute="centerX" id="t4u-Fc-5Bj"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="135" height="131"/>
+                                        <connections>
+                                            <outlet property="pokemonLabel" destination="KRX-P2-PdX" id="mVM-Y5-6xK"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GenerationCell" id="IEs-Vg-Odi" userLabel="GenerationCell" customClass="GenerationCollectionReusableView" customModule="poketeam" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDJ-Fw-NOR" userLabel="GenerationLabel">
+                                            <rect key="frame" x="166" y="14.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tDJ-Fw-NOR" firstAttribute="centerY" secondItem="IEs-Vg-Odi" secondAttribute="centerY" id="Wjl-rY-b1C"/>
+                                        <constraint firstItem="tDJ-Fw-NOR" firstAttribute="centerX" secondItem="IEs-Vg-Odi" secondAttribute="centerX" id="txB-7g-Q9a"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="generationLabel" destination="tDJ-Fw-NOR" id="khQ-Zw-svM"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="SCv-mc-BLJ" id="MWa-ld-eUg"/>
+                                    <outlet property="delegate" destination="SCv-mc-BLJ" id="wXY-uj-8zW"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wwv-zS-sIb"/>
