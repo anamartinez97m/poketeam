@@ -34,24 +34,24 @@
         <!--MyTeam-->
         <scene sceneID="Qz0-9Z-adq">
             <objects>
-                <viewController title="MyTeam" id="ftc-sU-fhO" userLabel="MyTeam" sceneMemberID="viewController">
+                <viewController title="MyTeam" id="ftc-sU-fhO" userLabel="MyTeam" customClass="MyTeamViewController" customModule="poketeam" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gBd-zw-rst">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="MyTeam Scene" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RUg-q0-idS">
-                                <rect key="frame" x="149" y="438" width="116" height="21"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="50J-Po-qhy">
+                                <rect key="frame" x="129" y="776" width="156" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </pageControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="0g9-nq-UWy"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="MyTeam" image="heart" catalog="system" id="ple-Ie-G1r" userLabel="MyTeam"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="pageOutlet" destination="50J-Po-qhy" id="E99-zq-7RA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ies-Qe-iWv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

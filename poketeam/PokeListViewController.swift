@@ -9,6 +9,8 @@ import UIKit
 
 class PokeListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
+    let config = URLSessionConfiguration.default
+    
     private let sectionInsets = UIEdgeInsets(
       top: 50.0,
       left: 20.0,
@@ -16,45 +18,77 @@ class PokeListViewController: UIViewController, UICollectionViewDataSource, UICo
       right: 20.0)
     private let itemsPerRow: CGFloat = 3
     
-    private let generations = [
-        "Generacion i",
-        "Generacion ii",
-        "Generacion iii"
-    ]
+    private var generations: [String] = []
+    
+    //private var generationsCount: Int = 0
     
     let pokemons = [
-        [
-            "😂",
-            "😳",
-            "🤪",
-            "🧐",
-            "🤯",
-            "😇"
-        ],
-        [
-            "😂",
-            "😳",
-            "🤪",
-            "🧐",
-            "🤯",
-            "😇"
-        ],
-        [
-            "😂",
-            "😳",
-            "🤪",
-            "🧐",
-            "🤯",
-            "😇"
-        ]
+        ["😂","😳","🤪","🧐","🤯","😇"],
+        ["😂","😳","🤪","🧐","🤯","😇"],
+        ["😂","😳","🤪","🧐","🤯","😇"]
     ]
-
+    
+    struct GenerationsResponse: Codable {
+        let count: Int
+        //let results: Dictionary<String>
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        getPokemonsGenerations {
+            response in
+            //numberOfGenerations = response
+            print("in callback", response)
+            for elem in 0 ..< response {
+                self.generations.append(elem.formatted())
+            }
+            print("generations despues del for: ", self.generations)
+        }
+    }
+    
+    func getPokemonsGenerations(callback: @escaping (Int) -> Void) {
+        let session = URLSession(configuration: config)
+        
+        let urlStr = "https://pokeapi.co/api/v2/generation"
+        
+        if let url = URL(string: urlStr) {
+            let task = session.dataTask(with: url, completionHandler: {
+                (data, response, error) in
+                guard data != nil else {
+                    if let err = error {
+                        debugPrint("error al recuperar los datos: ")
+                        debugPrint(err)
+                        DispatchQueue.main.async {
+                            print("error al recuperar los datos \(err.localizedDescription)")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            print("no hay datos")
+                        }
+                    }
+                    return
+                }
+                do {
+                    if let data = data {
+                        let res = try JSONDecoder().decode(GenerationsResponse.self, from: data)
+                        print(res)
+                        //self.generationsCount = res.count
+                        callback(res.count)
+                    }
+                } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+            
+        } else {
+            print("error al crear la url")
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        print("generations", generations)
         return generations.count
     }
     
@@ -89,14 +123,15 @@ class PokeListViewController: UIViewController, UICollectionViewDataSource, UICo
         return CGSize(width: widthPerItem, height: widthPerItem)
       }
       
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         insetForSectionAt section: Int) -> UIEdgeInsets {
         return sectionInsets
-      }
+    }
       
-      func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return sectionInsets.left
-      }
+    }
+    
 }
 
