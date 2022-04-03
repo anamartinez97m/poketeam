@@ -12,6 +12,7 @@
 		A17BDAA127F9A47200CE8E7D /* MyTeamPageOutlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BDAA027F9A47200CE8E7D /* MyTeamPageOutlet.swift */; };
 		A17BDAA327F9B27200CE8E7D /* MyTeamSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BDAA227F9B27200CE8E7D /* MyTeamSlide.swift */; };
 		A17BDAA527F9B4C100CE8E7D /* MyTeamSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17BDAA427F9B4C100CE8E7D /* MyTeamSlide.xib */; };
+		A17BDAA727F9C2E900CE8E7D /* PokemonController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BDAA627F9C2E900CE8E7D /* PokemonController.swift */; };
 		A17C398927EF3C98004B3CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398827EF3C98004B3CC9 /* AppDelegate.swift */; };
 		A17C398B27EF3C98004B3CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398A27EF3C98004B3CC9 /* SceneDelegate.swift */; };
 		A17C398D27EF3C98004B3CC9 /* PokeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398C27EF3C98004B3CC9 /* PokeListViewController.swift */; };
@@ -47,6 +48,7 @@
 		A17BDAA027F9A47200CE8E7D /* MyTeamPageOutlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamPageOutlet.swift; sourceTree = "<group>"; };
 		A17BDAA227F9B27200CE8E7D /* MyTeamSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamSlide.swift; sourceTree = "<group>"; };
 		A17BDAA427F9B4C100CE8E7D /* MyTeamSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTeamSlide.xib; sourceTree = "<group>"; };
+		A17BDAA627F9C2E900CE8E7D /* PokemonController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonController.swift; sourceTree = SOURCE_ROOT; };
 		A17C398527EF3C98004B3CC9 /* poketeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = poketeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17C398827EF3C98004B3CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17C398A27EF3C98004B3CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				A17C398827EF3C98004B3CC9 /* AppDelegate.swift */,
 				A17C398A27EF3C98004B3CC9 /* SceneDelegate.swift */,
+				A17BDAA627F9C2E900CE8E7D /* PokemonController.swift */,
 				A17C398C27EF3C98004B3CC9 /* PokeListViewController.swift */,
 				A1E3C6E327F8A66C00887270 /* MyTeamViewController.swift */,
 				A17C398E27EF3C98004B3CC9 /* Main.storyboard */,
@@ -279,6 +282,7 @@
 			files = (
 				A17BDAA127F9A47200CE8E7D /* MyTeamPageOutlet.swift in Sources */,
 				A17C398D27EF3C98004B3CC9 /* PokeListViewController.swift in Sources */,
+				A17BDAA727F9C2E900CE8E7D /* PokemonController.swift in Sources */,
 				A17BDAA327F9B27200CE8E7D /* MyTeamSlide.swift in Sources */,
 				A17C398927EF3C98004B3CC9 /* AppDelegate.swift in Sources */,
 				A1784BDC27F240CD00889840 /* GenerationCollectionReusableView.swift in Sources */,

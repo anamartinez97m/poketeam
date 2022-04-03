@@ -9,9 +9,8 @@ import UIKit
 
 class MyTeamSlide: UIView {
 
-    @IBOutlet weak var pokemonImage: UILabel!
+    @IBOutlet weak var pokemonImage: UIImageView!
     @IBOutlet weak var pokemonName: UILabel!
     @IBOutlet weak var pokemonDescription: UILabel!
-    
 
 }
