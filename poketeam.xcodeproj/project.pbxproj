@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		A1784BDA27F2251400889840 /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1784BD927F2251400889840 /* PokemonCollectionViewCell.swift */; };
 		A1784BDC27F240CD00889840 /* GenerationCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1784BDB27F240CD00889840 /* GenerationCollectionReusableView.swift */; };
+		A17BDAA127F9A47200CE8E7D /* MyTeamPageOutlet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BDAA027F9A47200CE8E7D /* MyTeamPageOutlet.swift */; };
+		A17BDAA327F9B27200CE8E7D /* MyTeamSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17BDAA227F9B27200CE8E7D /* MyTeamSlide.swift */; };
+		A17BDAA527F9B4C100CE8E7D /* MyTeamSlide.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17BDAA427F9B4C100CE8E7D /* MyTeamSlide.xib */; };
 		A17C398927EF3C98004B3CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398827EF3C98004B3CC9 /* AppDelegate.swift */; };
 		A17C398B27EF3C98004B3CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398A27EF3C98004B3CC9 /* SceneDelegate.swift */; };
 		A17C398D27EF3C98004B3CC9 /* PokeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17C398C27EF3C98004B3CC9 /* PokeListViewController.swift */; };
@@ -41,6 +44,9 @@
 /* Begin PBXFileReference section */
 		A1784BD927F2251400889840 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1784BDB27F240CD00889840 /* GenerationCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationCollectionReusableView.swift; sourceTree = "<group>"; };
+		A17BDAA027F9A47200CE8E7D /* MyTeamPageOutlet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamPageOutlet.swift; sourceTree = "<group>"; };
+		A17BDAA227F9B27200CE8E7D /* MyTeamSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamSlide.swift; sourceTree = "<group>"; };
+		A17BDAA427F9B4C100CE8E7D /* MyTeamSlide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyTeamSlide.xib; sourceTree = "<group>"; };
 		A17C398527EF3C98004B3CC9 /* poketeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = poketeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A17C398827EF3C98004B3CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A17C398A27EF3C98004B3CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,7 +118,10 @@
 				A17C398E27EF3C98004B3CC9 /* Main.storyboard */,
 				A17C399127EF3C99004B3CC9 /* Assets.xcassets */,
 				A17C399327EF3C99004B3CC9 /* LaunchScreen.storyboard */,
+				A17BDAA427F9B4C100CE8E7D /* MyTeamSlide.xib */,
 				A17C399627EF3C99004B3CC9 /* Info.plist */,
+				A17BDAA227F9B27200CE8E7D /* MyTeamSlide.swift */,
+				A17BDAA027F9A47200CE8E7D /* MyTeamPageOutlet.swift */,
 				A1784BD927F2251400889840 /* PokemonCollectionViewCell.swift */,
 				A1784BDB27F240CD00889840 /* GenerationCollectionReusableView.swift */,
 			);
@@ -242,6 +251,7 @@
 			files = (
 				A17C399527EF3C99004B3CC9 /* LaunchScreen.storyboard in Resources */,
 				A17C399227EF3C99004B3CC9 /* Assets.xcassets in Resources */,
+				A17BDAA527F9B4C100CE8E7D /* MyTeamSlide.xib in Resources */,
 				A17C399027EF3C98004B3CC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +277,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A17BDAA127F9A47200CE8E7D /* MyTeamPageOutlet.swift in Sources */,
 				A17C398D27EF3C98004B3CC9 /* PokeListViewController.swift in Sources */,
+				A17BDAA327F9B27200CE8E7D /* MyTeamSlide.swift in Sources */,
 				A17C398927EF3C98004B3CC9 /* AppDelegate.swift in Sources */,
 				A1784BDC27F240CD00889840 /* GenerationCollectionReusableView.swift in Sources */,
 				A1E3C6E427F8A66C00887270 /* MyTeamViewController.swift in Sources */,
