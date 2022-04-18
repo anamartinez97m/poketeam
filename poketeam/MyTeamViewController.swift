@@ -12,31 +12,27 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var pageOutlet: UIPageControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    var pokemonController = PokemonController()
+    var pokemon = Pokemon()
+    
     var myTeam = ["😂","🤪","🧐","🤯"]
     var frame = CGRect.zero
     var slides: [MyTeamSlide] = []
-    // let pokemonController: PokemonController = PokemonController()
-    
-    /*struct Pokemon: Codable {
-        let image: UIImage
-        let name: String
-        let description: String
-    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.delegate = self
         
-        getPokemonsByName(name: "eevee") { [self]
+        pokemonController.getPokemonsByName(name: "eevee") { [self]
             response in
             print("in callback", response)
             self.myTeam.append(response.name)
-            slides = createSlides(response: response)
-            setupScreens(slides: slides)
+            /*slides = createSlides(response: response)
+            setupScreens(slides: slides)*/
         }
 
-        //slides = createSlides()
+        // slides = createSlides()
         // setupScreens(slides: slides)
         
         pageOutlet.numberOfPages = slides.count
@@ -73,11 +69,6 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
         pageOutlet.currentPage = Int(pageIndex)
     }
 
-    
-    
-    
-    let config = URLSessionConfiguration.default
-    
     struct PokemonsResponse: Codable {
         let name: String
         let base_experience: Int
@@ -94,43 +85,5 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     
     struct PokemonsSpriteOtherDreamWorld: Codable {
         let front_default: String
-    }
-
-    func getPokemonsByName(name: String, callback: @escaping (PokemonsResponse) -> Void) {
-        let session = URLSession(configuration: config)
-        
-        let urlStr = "https://pokeapi.co/api/v2/pokemon/" + name
-        
-        if let url = URL(string: urlStr) {
-            let task = session.dataTask(with: url, completionHandler: {
-                (data, response, error) in
-                guard data != nil else {
-                    if let err = error {
-                        debugPrint("error al recuperar los datos: ")
-                        debugPrint(err)
-                        DispatchQueue.main.async {
-                            print("error al recuperar los datos \(err.localizedDescription)")
-                        }
-                    } else {
-                        DispatchQueue.main.async {
-                            print("no hay datos")
-                        }
-                    }
-                    return
-                }
-                do {
-                    if let data = data {
-                        let res = try JSONDecoder().decode(PokemonsResponse.self, from: data)
-                        callback(res)
-                    }
-                } catch {
-                    print(error)
-                }
-            })
-            task.resume()
-            
-        } else {
-            print("error al crear la url")
-        }
     }
 }
