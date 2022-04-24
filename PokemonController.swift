@@ -8,32 +8,51 @@
 import Foundation
 
 class PokemonController {
+    struct GeneralResponse: Decodable {
+        let results: [Pokemon]
+    }
+    
     let config = URLSessionConfiguration.default
     
-    struct PokemonsResponse: Codable {
-        let name: String
-        let base_experience: Int
-        let sprites: PokemonsSprite
-    }
-    
-    struct PokemonsSprite: Codable {
-        let other: PokemonsSpriteOther
-    }
-    
-    struct PokemonsSpriteOther: Codable {
-        let dream_world: PokemonsSpriteOtherDreamWorld
-    }
-    
-    struct PokemonsSpriteOtherDreamWorld: Codable {
-        let front_default: String
-    }
-    
-    struct GenerationsResponse: Codable {
-        let count: Int
-        //let results: Dictionary<String>
+    func getAllPokemonsNames(callback: @escaping ([Pokemon]) -> Void) {
+        let session = URLSession(configuration: config)
+        
+        let urlStr = "https://pokeapi.co/api/v2/pokemon/?limit=1200"
+        
+        if let url = URL(string: urlStr) {
+            let task = session.dataTask(with: url, completionHandler: {
+                (data, response, error) in
+                guard data != nil else {
+                    if let err = error {
+                        debugPrint("error al recuperar los datos: ")
+                        debugPrint(err)
+                        DispatchQueue.main.async {
+                            print("error al recuperar los datos \(err.localizedDescription)")
+                        }
+                    } else {
+                        DispatchQueue.main.async {
+                            print("no hay datos")
+                        }
+                    }
+                    return
+                }
+                do {
+                    if let data = data {
+                        let res = try JSONDecoder().decode(GeneralResponse.self, from: data)
+                        callback(res.results)
+                    }
+                } catch {
+                    print(error)
+                }
+            })
+            task.resume()
+            
+        } else {
+            print("error al crear la url")
+        }
     }
 
-    func getPokemonsByName(name: String, callback: @escaping (PokemonsResponse) -> Void) {
+    func getPokemonsByName(name: String, callback: @escaping (Pokemon) -> Void) {
         let session = URLSession(configuration: config)
         
         let urlStr = "https://pokeapi.co/api/v2/pokemon/" + name
@@ -57,7 +76,7 @@ class PokemonController {
                 }
                 do {
                     if let data = data {
-                        let res = try JSONDecoder().decode(PokemonsResponse.self, from: data)
+                        let res = try JSONDecoder().decode(Pokemon.self, from: data)
                         callback(res)
                     }
                 } catch {
@@ -95,7 +114,7 @@ class PokemonController {
                 }
                 do {
                     if let data = data {
-                        let res = try JSONDecoder().decode(GenerationsResponse.self, from: data)
+                        let res = try JSONDecoder().decode(Generations.self, from: data)
                         print(res)
                         //self.generationsCount = res.count
                         callback(res.count)

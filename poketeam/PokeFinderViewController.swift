@@ -11,9 +11,12 @@ class PokeFinderViewController: UIViewController, UITableViewDataSource, UISearc
     
     @IBOutlet weak var searchTableView: UITableView!
     
+    var pokemonController = PokemonController()
+    
     var pokemons: [Pokemon] = []
     let searchController = UISearchController(searchResultsController: nil)
     var filteredPokemons: [Pokemon] = []
+    var pokemonToView: Pokemon!
     
     var isSearchBarEmpty: Bool {
         return searchController.searchBar.text?.isEmpty ?? true
@@ -25,28 +28,16 @@ class PokeFinderViewController: UIViewController, UITableViewDataSource, UISearc
  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        pokemons = [
-            Pokemon(name: "Pikachu", base_experience: 1),
-            Pokemon(name: "Eevee", base_experience: 2),
-            Pokemon(name: "Pichu", base_experience: 3),
-            Pokemon(name: "Pikachu", base_experience: 1),
-            Pokemon(name: "Eevee", base_experience: 2),
-            Pokemon(name: "Pichu", base_experience: 3),
-            Pokemon(name: "Pikachu", base_experience: 1),
-            Pokemon(name: "Eevee", base_experience: 2),
-            Pokemon(name: "Pichu", base_experience: 3),
-            Pokemon(name: "Pikachu", base_experience: 1),
-            Pokemon(name: "Eevee", base_experience: 2),
-            Pokemon(name: "Pichu", base_experience: 3),
-            Pokemon(name: "Pikachu", base_experience: 1),
-            Pokemon(name: "Eevee", base_experience: 2),
-            Pokemon(name: "Pichu", base_experience: 3)
-        ]
+        
+        pokemonController.getAllPokemonsNames() { [self]
+            response in
+            self.pokemons.append(contentsOf: response)
+        }
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search Pokemons"
+        searchController.hidesNavigationBarDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
@@ -76,6 +67,7 @@ class PokeFinderViewController: UIViewController, UITableViewDataSource, UISearc
         } else {
             pokemon = pokemons[indexPath.row]
         }
+        
         pokemonDetailController.pokemon = pokemon
     }
     
