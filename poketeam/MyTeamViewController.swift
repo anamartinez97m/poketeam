@@ -13,7 +13,6 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var pokemonController = PokemonController()
-    var pokemon = Pokemon()
     
     var myTeam = ["😂","🤪","🧐","🤯"]
     var frame = CGRect.zero
@@ -87,3 +86,4 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
         let front_default: String
     }
 }
+

@@ -7,20 +7,108 @@
 
 import UIKit
 
-class PokeFinderViewController: UIViewController {
+class PokeFinderViewController: UIViewController, UITableViewDataSource, UISearchResultsUpdating {
     
-    @IBOutlet weak var searchBar: PokeFinderViewController!
+    @IBOutlet weak var searchTableView: UITableView!
     
-    let resultsFound: [Pokemon] = []
+    var pokemons: [Pokemon] = []
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredPokemons: [Pokemon] = []
     
-    struct Pokemon: Codable {
-        let name: String
-        let base_experience: Int
+    var isSearchBarEmpty: Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    var isFiltering: Bool {
+        return searchController.isActive && !isSearchBarEmpty
     }
  
     override func viewDidLoad() {
-       super.viewDidLoad()
+        super.viewDidLoad()
+
+        pokemons = [
+            Pokemon(name: "Pikachu", base_experience: 1),
+            Pokemon(name: "Eevee", base_experience: 2),
+            Pokemon(name: "Pichu", base_experience: 3),
+            Pokemon(name: "Pikachu", base_experience: 1),
+            Pokemon(name: "Eevee", base_experience: 2),
+            Pokemon(name: "Pichu", base_experience: 3),
+            Pokemon(name: "Pikachu", base_experience: 1),
+            Pokemon(name: "Eevee", base_experience: 2),
+            Pokemon(name: "Pichu", base_experience: 3),
+            Pokemon(name: "Pikachu", base_experience: 1),
+            Pokemon(name: "Eevee", base_experience: 2),
+            Pokemon(name: "Pichu", base_experience: 3),
+            Pokemon(name: "Pikachu", base_experience: 1),
+            Pokemon(name: "Eevee", base_experience: 2),
+            Pokemon(name: "Pichu", base_experience: 3)
+        ]
+        
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Pokemons"
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        definesPresentationContext = true
+        searchTableView.tableHeaderView = searchController.searchBar
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      
+      if let indexPath = searchTableView.indexPathForSelectedRow {
+          searchTableView.deselectRow(at: indexPath, animated: true)
+      }
+    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard
+            segue.identifier == "ShowDetailSegue",
+            let indexPath = searchTableView.indexPathForSelectedRow,
+            let pokemonDetailController = segue.destination as? PokemonDetailController
+            else {
+                return
+        }
+      
+        let pokemon: Pokemon
+        if isFiltering {
+            pokemon = filteredPokemons[indexPath.row]
+        } else {
+            pokemon = pokemons[indexPath.row]
+        }
+        pokemonDetailController.pokemon = pokemon
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredPokemons.count
+        }
+        return pokemons.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PokeFinderCell", for: indexPath)
+        let pokemon: Pokemon
+        if isFiltering {
+            pokemon = filteredPokemons[indexPath.row]
+        } else {
+            pokemon = pokemons[indexPath.row]
+        }
+        cell.textLabel?.text = pokemon.name
+        return cell
+    }
+
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredPokemons = pokemons.filter{(pokemon: Pokemon) -> Bool in
+            return pokemon.name.lowercased().contains(searchText.lowercased())
+        }
+        searchTableView.reloadData()
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        filterContentForSearchText(searchBar.text!)
+    }
+
 }

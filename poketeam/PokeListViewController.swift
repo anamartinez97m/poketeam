@@ -9,8 +9,6 @@ import UIKit
 
 class PokeListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
-    // let config = URLSessionConfiguration.default
-   
     let pokemonController = PokemonController()
     
     private let sectionInsets = UIEdgeInsets(

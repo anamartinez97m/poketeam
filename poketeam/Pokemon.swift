@@ -7,7 +7,12 @@
 
 import Foundation
 
-class Pokemon {
+struct Pokemon: Decodable {
+  let name: String
+  let base_experience: Int
+}
+
+/*class Pokemon {
     struct Pokemon: Codable {
         let name: String
         let base_experience: Int
@@ -25,4 +30,4 @@ class Pokemon {
     struct PokemonsSpriteOtherDreamWorld: Codable {
         let front_default: String
     }
-}
+}*/
