@@ -27,6 +27,7 @@
 		A1AA9755280DE0E7005DC3D3 /* PokeFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9754280DE0E7005DC3D3 /* PokeFinderViewController.swift */; };
 		A1AA9757280DE4BC005DC3D3 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1AA9756280DE4BC005DC3D3 /* Pokemon.swift */; };
 		A1E3C6E427F8A66C00887270 /* MyTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E3C6E327F8A66C00887270 /* MyTeamViewController.swift */; };
+		B6DBD0A7829F1549E6A515FB /* Pods_poketeam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F65C059A738C45AC3CA76F5E /* Pods_poketeam.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75D2479B681714E85DFF9E8F /* Pods-poketeam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poketeam.release.xcconfig"; path = "Target Support Files/Pods-poketeam/Pods-poketeam.release.xcconfig"; sourceTree = "<group>"; };
+		8507367E624739E43438B3EC /* Pods-poketeam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-poketeam.debug.xcconfig"; path = "Target Support Files/Pods-poketeam/Pods-poketeam.debug.xcconfig"; sourceTree = "<group>"; };
 		A1784BD927F2251400889840 /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1784BDB27F240CD00889840 /* GenerationCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationCollectionReusableView.swift; sourceTree = "<group>"; };
 		A17B0866281557B900F7BDDC /* PokemonDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailController.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		A1AA9754280DE0E7005DC3D3 /* PokeFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeFinderViewController.swift; sourceTree = "<group>"; };
 		A1AA9756280DE4BC005DC3D3 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
 		A1E3C6E327F8A66C00887270 /* MyTeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTeamViewController.swift; sourceTree = "<group>"; };
+		F65C059A738C45AC3CA76F5E /* Pods_poketeam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_poketeam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6DBD0A7829F1549E6A515FB /* Pods_poketeam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,9 +103,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1870508B5704DEF3D29B20DF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8507367E624739E43438B3EC /* Pods-poketeam.debug.xcconfig */,
+				75D2479B681714E85DFF9E8F /* Pods-poketeam.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A17C397C27EF3C97004B3CC9 = {
 			isa = PBXGroup;
 			children = (
+				B83760E59E3AFAC59387D58C /* Frameworks */,
+				1870508B5704DEF3D29B20DF /* Pods */,
 				A17C398727EF3C98004B3CC9 /* poketeam */,
 				A17C399E27EF3C99004B3CC9 /* poketeamTests */,
 				A17C39A827EF3C99004B3CC9 /* poketeamUITests */,
@@ -160,6 +176,14 @@
 			path = poketeamUITests;
 			sourceTree = "<group>";
 		};
+		B83760E59E3AFAC59387D58C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F65C059A738C45AC3CA76F5E /* Pods_poketeam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,9 +191,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A17C39AF27EF3C99004B3CC9 /* Build configuration list for PBXNativeTarget "poketeam" */;
 			buildPhases = (
+				8E564648BDB23D9C4188611B /* [CP] Check Pods Manifest.lock */,
 				A17C398127EF3C98004B3CC9 /* Sources */,
 				A17C398227EF3C98004B3CC9 /* Frameworks */,
 				A17C398327EF3C98004B3CC9 /* Resources */,
+				B57EDB6E32F1E0D3989AE560 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -286,6 +312,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E564648BDB23D9C4188611B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-poketeam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B57EDB6E32F1E0D3989AE560 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-poketeam/Pods-poketeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-poketeam/Pods-poketeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-poketeam/Pods-poketeam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A17C398127EF3C98004B3CC9 /* Sources */ = {
@@ -478,6 +546,7 @@
 		};
 		A17C39B027EF3C99004B3CC9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8507367E624739E43438B3EC /* Pods-poketeam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -506,6 +575,7 @@
 		};
 		A17C39B127EF3C99004B3CC9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75D2479B681714E85DFF9E8F /* Pods-poketeam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
