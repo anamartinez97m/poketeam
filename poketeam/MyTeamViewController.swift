@@ -10,7 +10,8 @@ import UIKit
 class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var pageOutlet: UIPageControl!
-    @IBOutlet weak var scrollView: UIScrollView!
+    //@IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet var myTeamSlide: MyTeamSlide!
     
     var pokemonController = PokemonController()
     
@@ -21,14 +22,15 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scrollView.delegate = self
+        myTeamSlide = MyTeamSlide()
+        //scrollView.delegate = self
         
         pokemonController.getPokemonsByName(name: "eevee") { [self]
             response in
-            print("in callback", response)
+            //print("in callback", response)
             self.myTeam.append(response.name)
-            /*slides = createSlides(response: response)
-            setupScreens(slides: slides)*/
+            slides = createSlides(response: response)
+            setupScreens(slides: slides)
         }
 
         // slides = createSlides()
@@ -39,28 +41,29 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageOutlet)
     }
     
-    func createSlides(response: PokemonsResponse) -> [MyTeamSlide] {
+    func createSlides(response: Pokemon) -> [MyTeamSlide] {
         for index in 0 ..< myTeam.count {
-            let slide: MyTeamSlide = Bundle.main.loadNibNamed("MyTeamSlide", owner: self, options: nil)?.first as! MyTeamSlide
-            slide.pokemonImage.image = UIImage(named: response.sprites.other.dream_world.front_default)
-            slide.pokemonName.text = myTeam[index]
-            slide.pokemonDescription.text = "Descripcion"
-            
-            slides.append(slide)
+            //let slide: MyTeamSlide = Bundle.main.loadNibNamed("MyTeamSlide", owner: self, options: nil)?.first as! MyTeamSlide
+            //slide.pokemonImage.image = UIImage(named: response?.sprites.other.dream_world.front_default)
+            //myTeamSlide.pokemonName.text = myTeam[index]
+            //myTeamSlide.pokemonDescription.text = "Description"
+            //slide.setPokemonDescription("Description")
+            //myTeamSlide.setPokemonDescription("Description")
+            slides.append(myTeamSlide)
         }
         
         return slides
     }
     
     func setupScreens(slides: [MyTeamSlide]) {
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
-        scrollView.isPagingEnabled = true
+        //scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        //scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height)
+        //scrollView.isPagingEnabled = true
         
-        for i in 0 ..< slides.count {
-            slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
-            scrollView.addSubview(slides[i])
-        }
+        //for i in 0 ..< slides.count {
+        //    slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
+         //   scrollView.addSubview(slides[i])
+        //}
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

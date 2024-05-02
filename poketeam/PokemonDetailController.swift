@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftSVG
+import SVGKit
 
 class PokemonDetailController: UIViewController {
     @IBOutlet weak var pokemonNameTitle: UILabel!
@@ -30,10 +30,6 @@ class PokemonDetailController: UIViewController {
         if let pokemon = pokemon, let pokemonImageView = pokemonImageView {
             pokemonController.getPokemonsByName(name: pokemon.name) { [self]
                 response in
-                // print("in callback", response)
-                // self.pokemonImage = UIImage(named: response.sprites?.other.dream_world.front_default ?? "")
-                // pokemonImageView.image = self.pokemonImage
-                // print(response.sprites?.other.dream_world.front_default)
                 guard let svgURLString = response.sprites?.other.dream_world.front_default,
                       let svgURL = URL(string: svgURLString) else {
                     print("Invalid SVG URL")
@@ -41,18 +37,19 @@ class PokemonDetailController: UIViewController {
                 }
                 
                 // Load SVG from URL
-                do {
-                    let svgData = try Data(contentsOf: svgURL)
-                    // Convert SVG to UIImage
-                    let svgImage = UIImage(data: svgData)
-                    DispatchQueue.main.async {
-                        pokemonImageView.image = svgImage
+                DispatchQueue.global(qos: .background).async {
+                    do {
+                        let svgData = try Data(contentsOf: svgURL)
+                        let svgImage = SVGKImage(data: svgData)
+                        
+                        DispatchQueue.main.async {
+                            pokemonImageView.image = svgImage?.uiImage
+                        }
+                    } catch {
+                        print("Error loading SVG image: ", error)
                     }
-                } catch {
-                    print("Error loading SVG image: ", error)
                 }
             }
-            // pokemonImageView.image = pokemonImage
             pokemonNameTitle.text = pokemon.name
         }
     }
