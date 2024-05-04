@@ -42,15 +42,15 @@ class MyTeamViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func createSlides(response: Pokemon) -> [MyTeamSlide] {
-        for index in 0 ..< myTeam.count {
+        //for index in 0 ..< myTeam.count {
             //let slide: MyTeamSlide = Bundle.main.loadNibNamed("MyTeamSlide", owner: self, options: nil)?.first as! MyTeamSlide
             //slide.pokemonImage.image = UIImage(named: response?.sprites.other.dream_world.front_default)
             //myTeamSlide.pokemonName.text = myTeam[index]
             //myTeamSlide.pokemonDescription.text = "Description"
             //slide.setPokemonDescription("Description")
             //myTeamSlide.setPokemonDescription("Description")
-            slides.append(myTeamSlide)
-        }
+            //slides.append(myTeamSlide)
+        //}
         
         return slides
     }

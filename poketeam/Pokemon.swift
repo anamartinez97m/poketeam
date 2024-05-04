@@ -11,6 +11,7 @@ struct Pokemon: Codable {
     let name: String
     let base_experience: Int?
     let sprites: PokemonsSprite?
+    let types: [PokemonTypes]?
 }
 
 struct PokemonsSprite: Codable {
@@ -27,4 +28,14 @@ struct PokemonsSpriteOtherDreamWorld: Codable {
 
 struct Generations: Codable {
     let count: Int
+}
+
+struct PokemonTypes: Codable {
+    let slot: Int
+    let type: PokemonType
+}
+
+struct PokemonType: Codable {
+    let name: String
+    let url: String
 }
